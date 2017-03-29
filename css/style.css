@@ -1,14 +1,19 @@
-<<<<<<< HEAD
 #sandbox {
 	float: left;
+	width: 55%;
 }
 
 body {
     font-family: 'Roboto', sans-serif;
 }
-||||||| merged common ancestors
-=======
-#sandbox {
-	float: left;
+
+#helpdiv {
+	background-color: #F2F2F2;
+	border: 1px #F8F8F8;
+	border-radius: 2px;
+	padding-left: 10px;
+	width: 40%;
+	height: 300px;
+	float: right;
 }
->>>>>>> 40bda9404270dc1c0f7b49976053c5d1b25b9690
+
