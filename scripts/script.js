@@ -27,7 +27,7 @@ function getSelectedText() {
 }
 
 var phpCode = [new HelpText("echo", "<em>void</em> echo string, <br />εμφανίζει το string στην οθόνη, δεν χρειάζεται παρενθέσεις"),
-				new HelpText("for", '<strong>Παράδειγμα:</strong> <br /> for($i = 0; $i < 10; $i++) {<br> echo $i;}')];
+		new HelpText("for", "<strong>Παράδειγμα:</strong> <br /> <span class='code'>for($i = 0; $i < 10; $i++) {<br><span class='intend1'>echo $i;</span> <br>}</span>")];
 
 function HelpText(key, help) {
 	this.key = key;
