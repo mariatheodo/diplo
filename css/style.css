@@ -17,3 +17,10 @@ body {
 	float: right;
 }
 
+.code {
+	font-family: monospace;
+}
+
+.intend1 {
+	padding-left: 2em;
+}
