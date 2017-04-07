@@ -24,3 +24,7 @@ body {
 .intend1 {
 	padding-left: 2em;
 }
+
+.example {
+	text-emphasis-style: filled;
+}
