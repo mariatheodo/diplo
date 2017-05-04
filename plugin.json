@@ -1,0 +1,13 @@
+[{
+    "author": "Maria Theodo",
+    "version": "1.0",
+    "name": "PHP Learning Tool",
+    "url": "https://github.com/mariath/",
+    "rightbar": [
+        {
+            "action": "codiad.MY_PLUGIN.SOME_METHOD();",
+            "icon": "icon-info-circled",
+            "title": "PHP Learning Tool"
+        }
+    ]
+}]
