@@ -1,1 +1,39 @@
 /* Any needed CSS directives... */
+#help {
+    top: 10vh;
+    left: 70vw;
+    position: absolute;
+    z-index: 200;
+    display: inherit;
+    padding: 20px;
+    background-color: #333333;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    border-radius: 2px;
+}
+
+.code {
+    font-family: "Consolas", "Ubuntu Mono", "Menlo","Monaco", monospace,"source-code-pro";
+}
+
+.intend1 {
+    padding-left: 2em;
+}
+
+.example {
+    text-emphasis-style: filled;
+}
+
+p {
+    padding-bottom: 5px;
+}
+
+#help::before {
+    float: right;
+    font-size: 20px;
+    margin: -10px -7px 0 0;
+    padding: 5px;
+    cursor: pointer;
+    color: #999;
+    font-style: normal;
+    text-align: center;
+}

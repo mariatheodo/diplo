@@ -20,14 +20,15 @@
         // Allows relative `this.path` linkage
         path: curpath,
         isVisible: false,
-        panel: $('<div id="help">'),
+        panel: $('<div id="help" class="icon-cancel">'),
+       
 
         init: function() {
 
             // Start your plugin here...
             var _this       = this;
-            $('#workspace').append(panel);
-            panel.hide();
+            $('#workspace').append(this.panel);
+            this.panel.hide();
             amplify.subscribe('active.onOpen', function(path){
                 _this.addKeyBindings();
             });
@@ -86,8 +87,8 @@
             "defined": "<p>Επιστρέφει true αν η σταθερά είναι δηλωμένη</p><p class='code'>if (defined('FIRSTNAME')) {</p>" +
                 "<p class='code intend1'>echo 'Welcome'.FIRSTNAME;</p><p class='code'>}</p>",
             "if": "<p>Χρησιμοποιείται για έλεγχο μιας συνθήκης.</p><p class='code'>if ($a > 0) {</p><p class='code intend1'>" +
-                "//κώδικας</p><p class='code'>}</p><p class='code'>elseif ($a < 0) {</p><p class='code intend1'>//κώδικας</p>" +
-                "<p class='code'>}</p><p class='code'>else {</p><p class='code intend1'>//κώδικας</p><p class='code'>}</p><p>Τα σκέλη elseif " +
+                "//κώδικας1</p><p class='code'>}</p><p class='code'>elseif ($a < 0) {</p><p class='code intend1'>//κώδικας2</p>" +
+                "<p class='code'>}</p><p class='code'>else {</p><p class='code intend1'>//κώδικας3</p><p class='code'>}</p><p>Τα σκέλη elseif " +
                 "και else δεν είναι απαραίτητα.</p>"
             //new HelpText("$_post", "<p>Με την $_POST μεταφέρονται δεδομένα που υποβάλει ο χρήστης μέσα από μια HTML φόρμα. Αν στη " +
             //"φόρμα έχουμε:</p><p class='code'>\<input method='post' name='onoma'\></p><p>τότε στην PHP θα τα δούμε ως:</p>")
@@ -101,26 +102,18 @@
             if(!this.isVisible) {
                 this.isVisible = true;
             }
-            panel.css({
-                'top': window.outerHeight * 0.2,
-                'left': window.outerWidth * 0.7,
-                'background-color': 'black',
-                'position': 'absolute',
-                'z-index': 200,
-                'display': 'inherit'
-            });
-
-            panel.show();
-            panel.html(this.phpCode[text]);
-            console.log("is it?");
+            this.panel.show();
+            this.panel.html(this.phpCode[text]);
+            console.log("hello");
         },
 
         hidePanel: function() {
             if (this.isVisible) {
                 this.isVisible = false;
-                panel.html("");
-                panel.hide();
             }
+            this.panel.html("");
+            this.panel.hide();
+
         }
 
     }
