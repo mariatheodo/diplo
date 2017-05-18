@@ -20,13 +20,14 @@
         // Allows relative `this.path` linkage
         path: curpath,
         isVisible: false,
-        panel: $('<div id="help" class="icon-cancel">'),
-       
+        panel: $('<div id="panel">'),
 
         init: function() {
 
             // Start your plugin here...
-            var _this       = this;
+            var _this = this;
+            this.panel.append('<div id="close-handle" class="icon-cancel" onclick="codiad.LearningTool.hidePanel();">' +
+                '</div><div id="help"></div>');
             $('#workspace').append(this.panel);
             this.panel.hide();
             amplify.subscribe('active.onOpen', function(path){
@@ -59,14 +60,16 @@
         },
 
         showHelp: function() {
-            //alert("test passed");
             if (codiad.filemanager.getExtension(codiad.active.getPath()) == "php") {
                 var selectedText = codiad.editor.getSelectedText().toLowerCase().trim();
                 if(selectedText == "") {
-                    return;
+                    this.hidePanel();
                 }
                 if(this.phpCode.hasOwnProperty(selectedText)) {
-                    this.showPanel(selectedText);
+                    this.showPanel(this.phpCode[selectedText]);
+                }
+                else {
+                    this.showPanel("Δεν βρέθηκε αντίστοιχη βοήθεια");
                 }
             }
         },
@@ -101,19 +104,17 @@
         showPanel: function (text) {
             if(!this.isVisible) {
                 this.isVisible = true;
+                this.panel.show();
             }
-            this.panel.show();
-            this.panel.html(this.phpCode[text]);
-            console.log("hello");
+            $('#help').html(text);
         },
 
         hidePanel: function() {
             if (this.isVisible) {
                 this.isVisible = false;
+                $('#help').html("");
+                this.panel.hide();
             }
-            this.panel.html("");
-            this.panel.hide();
-
         }
 
     }
