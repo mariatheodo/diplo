@@ -2,6 +2,7 @@
 #panel {
     top: 10vh;
     left: 65vw;
+    max-width: 30%;
     position: absolute;
     z-index: 200;
     display: inherit;
@@ -47,4 +48,12 @@ p {
 
 #close-handle:hover {
     color: #fff;
+}
+
+a {
+    color: powderblue;
+}
+
+.link {
+    padding-top: 10px;
 }
