@@ -5,7 +5,7 @@ $username = "root";
 $password = "";
 $dbname = "php";
 
-@$conn = mysqli_connect($servername, $username, $password, $dbname);		//γίνεται η σύνδεση με τη βάση
+$conn = mysqli_connect($servername, $username, $password, $dbname);		//γίνεται η σύνδεση με τη βάση
 if (!$conn) {												
     die("Connection failed");
 }

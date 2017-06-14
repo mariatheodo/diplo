@@ -13,5 +13,6 @@ while ($row = mysqli_fetch_assoc($result)) {
 foreach ($words as $word) {
     echo $word;
 }
+mysqli_close($conn);
 
 ?>

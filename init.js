@@ -53,7 +53,7 @@
                         "win": "Ctrl-Alt-L"
                     },
                     exec: function () {
-                        _this.showHelp();
+                        _this.findWord();
                     }
                 });
                 manager.addCommand({
@@ -102,6 +102,19 @@
                 textArea.html("");
                 this.panel.hide();
             }
+        },
+
+        findWord: function(position) {
+            if (codiad.editor.getActive() === null) {
+                this.hide();
+                return false;
+            }
+            //Get prefix
+            if (typeof(position) == 'undefined') {
+                position    = codiad.editor.getActive().getCursorPosition();
+            }
+            var token   = codiad.editor.getActive().getSession().getTokenAt(position.row,position.column);
+            this.showPanel(token.value);
         }
 
     }
