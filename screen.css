@@ -1,8 +1,8 @@
 /* Any needed CSS directives... */
-#panel {
-    top: 10vh;
-    left: 65vw;
-    max-width: 30%;
+#panel, #adminPanel {
+    top: 5vh;
+    left: 60vw;
+    max-width: 35%;
     position: absolute;
     z-index: 200;
     display: inherit;
@@ -10,6 +10,8 @@
     background-color: #333333;
     border: 3px solid rgba(255, 255, 255, 0.5);
     border-radius: 3px;
+    resize: both;
+    overflow: auto;
 }
 
 .code {
@@ -32,11 +34,11 @@ p {
     padding-bottom: 5px;
 }
 
-#close-handle::before {
+.close-handle::before {
     content: "\2715";
 }
 
-#close-handle {
+.close-handle {
     position: relative;
     float: right;
     margin: -20px -10px 0 0;
@@ -46,7 +48,7 @@ p {
     font-size: x-large;
 }
 
-#close-handle:hover {
+.close-handle:hover {
     color: #fff;
 }
 
