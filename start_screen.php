@@ -1,23 +1,20 @@
 <?php
 require_once('../../common.php');
 
-
-session_start([
-    'cookie_lifetime' => 86400,
-]);
-
-if (isset($_SESSION['connect']) && $_SESSION['connect'] === true) {
+//ελέγχει αν ο διαχειριστής έχει ήδη δώσει τα στοιχεία του
+if (isset($_SESSION['connect']) && $_SESSION['connect'] == 1) {
     include_once 'admin_insert.php';
 }
+// δημιουργεί την οθόνη εισαγωγής στοιχείων του διαχειριστή
 else { ?>
     <div class="settings">
         <label>Δώστε τα στοιχεία του διαχειριστή:</label>
         <hr>
     </div>
     <form id="pass_dialog" method="post">
-        <label>Δώστε το όνομα του διαχειριστή:</label>
+        <label><p>Δώστε το όνομα του διαχειριστή:</p></label>
         <input type="text" name="username" autofocus="autofocus">
-        <label>Δώστε το password:</label>
+        <label><p>Δώστε το password:</p></label>
         <input type="password" name="password">
         <button class="btn-right" onclick="codiad.LearningTool.passwordCheck()">Υποβολή</button>
         <button class="btn-right" onclick="codiad.LearningTool.hideAdminPanel()">Κλείσιμο</button>

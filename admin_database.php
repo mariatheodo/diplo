@@ -1,16 +1,17 @@
 <?php
 include_once 'connect.php';
 
+//έλεγχος αν έχει εισαχθεί η βασική λέξη - εντολή
 if (isset($_POST['word']) && $_POST['word'] !== "") {
     $pword = $_POST['word'];
 }
 elseif ($_POST['word'] == "") {
-    echo 'Παρακαλώ δώστε την λέξη που θα προστεθεί <button class="btn-right"'.
-        'onclick="codiad.LearningTool.test()">Συνέχεια</button><button class="btn-right"'.
+    echo '<p>Παρακαλώ δώστε την λέξη που θα προστεθεί</p> <button class="btn-right"'.
+        'onclick="codiad.LearningTool.createAdminPanel()">Συνέχεια</button><button class="btn-right"'.
         'onclick="codiad.LearningTool.hideAdminPanel()">Κλείσιμο</button>';
     return;
 }
-
+//δημιουργία sql ερωτήματος
 $insert = "INSERT INTO list (word";
 $values = " VALUES ('$pword'";
 
@@ -54,13 +55,13 @@ mysqli_query($conn, $sql);
 if (mysqli_affected_rows($conn) > 0) {
 
     // μήνυμα επιτυχούς εισαγωγής
-    echo 'Θέλετε να προσθέσετε κάτι άλλο;<button class="btn-right"'.
-        'onclick="codiad.LearningTool.test()">Προσθήκη</button><button class="btn-right"'.
+    echo '<p>Θέλετε να προσθέσετε κάτι άλλο;</p><button class="btn-right"'.
+        'onclick="codiad.LearningTool.createAdminPanel()">Προσθήκη</button><button class="btn-right"'.
         'onclick="codiad.LearningTool.hideAdminPanel()">Κλείσιμο</button>';
 }
 else {
     // μήνυμα αποτυχίας εισαγωγής
-    echo 'Η εισαγωγή απέτυχε<button class="btn-right"'.
+    echo '<p>Η εισαγωγή απέτυχε</p><button class="btn-right"'.
         'onclick="codiad.LearningTool.hideAdminPanel()">Κλείσιμο</button>';
 }
 

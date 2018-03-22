@@ -7,7 +7,7 @@
     "rightbar": [
         {
             "action": "codiad.LearningTool.start();",
-            "icon": "icon-info-circled",
+            "icon": "icon-compass",
             "title": "PHP Learning Tool"
         }
     ]

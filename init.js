@@ -27,7 +27,8 @@
 
             // Start your plugin here...
             var _this = this;
-
+            
+            // δημιουργούνται οι οθόνες του plugin
             this.panel.append('<div class="icon-cancel, close-handle" onclick="codiad.LearningTool.hidePanel();">' +
                 '</div><div id="help"></div>');
             this.adminPanel.append('<div class="icon-cancel, close-handle" onclick="codiad.LearningTool.hideAdminPanel();">' +
@@ -39,7 +40,6 @@
             amplify.subscribe('active.onOpen', function(path){
                 _this.addKeyBindings();
             });
-
         },
 
         /**
@@ -73,7 +73,8 @@
                 });
             }
         },
-
+        
+        // εμφανίζει την οθόνη της βοήθειας
         showPanel: function (text) {
             var textArea = $('#help');
             if(!this.isVisible) {
@@ -81,6 +82,7 @@
                 this.panel.show();
             }
 
+            // εντοπίζει την λέξη στην βάση δεδομένων
             $.post(this.path + 'find.php', {word: text}, function (data) {
                 if (data === "") {
                     textArea.html("Δεν βρέθηκε περιεχόμενο για την λέξη " + text);
@@ -91,6 +93,7 @@
             })
         },
 
+        // κρύβει την οθόνη
         hidePanel: function() {
             var textArea = $('#help');
             if (this.isVisible) {
@@ -100,18 +103,21 @@
             }
         },
 
+        // βρίσκει την λέξη στη θέση του κέρσορα
         findWord: function(position) {
             if (codiad.filemanager.getExtension(codiad.active.getPath()) == "php") {
                 if (codiad.editor.getActive() === null) {
                     this.hide();
                     return false;
                 }
-                //Get prefix
+                
                 if (typeof(position) == 'undefined') {
                     position = codiad.editor.getActive().getCursorPosition();
                 }
                 var token = codiad.editor.getActive().getSession().getTokenAt(position.row, position.column);
                 var word = token.value;
+                
+                // αντικαθιστά το μονό εισαγωγικό με διπλό
                 if (word.startsWith("'")) {
                     word = '"' + word.substring(1, word.length - 1) + '"';
                 }
@@ -120,6 +126,7 @@
             }
         },
         
+        // εμφανίζει την αρχική οθόνη του διαχειριστή
         start: function () {
             var textArea = $('#admin');
             if (!this.isVisible) {
@@ -131,8 +138,8 @@
             })
         },
 
-        test: function() {
-
+        // οδηγεί στην οθόνη εισαγωγής λέξεων
+        createAdminPanel: function() {
             var textArea = $('#admin');
             if (!this.isVisible) {
                 this.isVisible = true;
@@ -140,11 +147,11 @@
             }
             $.post(this.path + 'admin_insert.php', function (data) {
                 textArea.html(data);
-                })
+                });
         },
 
+        // προσθέτει την λέξη - εξήγηση στην βάση δεδομένων
         addToDataBase: function () {
-
             var textArea = $('#admin');
             var path = this.path;
             $('#dialog').submit(function (e) {
@@ -160,10 +167,9 @@
                         textArea.html(data);
                     });
             });
-
-
         },
 
+        // κλείνει την οθόνη διαχείρισης
         hideAdminPanel: function () {
             var textArea = $('#admin');
             if (this.isVisible) {
@@ -171,9 +177,9 @@
                 textArea.html("");
                 this.adminPanel.hide();
             }
-
         },
         
+        // κάνει τον έλεγχο των στοιχείων του διαχειριστή
         passwordCheck: function () {
             var textArea = $('#admin');
             var path = this.path;
@@ -191,7 +197,5 @@
                     });
             });
         }
-
     }
-
 })(this, jQuery);
