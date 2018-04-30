@@ -3,12 +3,12 @@ require_once('../../common.php');
 
 //ελέγχει αν ο διαχειριστής έχει ήδη δώσει τα στοιχεία του
 if (isset($_SESSION['connect']) && $_SESSION['connect'] == 1) {
-    include_once 'admin_insert.php';
+    include_once 'admin_choice.php';
 }
 // δημιουργεί την οθόνη εισαγωγής στοιχείων του διαχειριστή
 else { ?>
     <div class="settings">
-        <label>Δώστε τα στοιχεία του διαχειριστή:</label>
+        <label><div>Δώστε τα στοιχεία του διαχειριστή:</div></label>
         <hr>
     </div>
     <form id="pass_dialog" method="post">

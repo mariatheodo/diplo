@@ -2,7 +2,6 @@
 #panel, #adminPanel {
     top: 5vh;
     left: 60vw;
-    max-width: 35%;
     position: absolute;
     z-index: 200;
     display: inherit;
@@ -12,6 +11,14 @@
     border-radius: 3px;
     resize: both;
     overflow: auto;
+}
+
+#panel {
+    max-width: 40%;
+}
+
+#adminPanel {
+    max-width: 60%;
 }
 
 .code {
@@ -62,4 +69,8 @@ a {
 
 textarea {
     resize: vertical;
+}
+
+.cell:hover {
+    color: royalblue;
 }
